@@ -22,20 +22,27 @@ int main() {
     video::IVideoDriver* driver = device->getVideoDriver();
     scene::ISceneManager* smgr = device->getSceneManager();
 
-    scene::IAnimatedMesh* firstTable = smgr->getMesh("resources/table/table.obj");
-    scene::IAnimatedMeshSceneNode* firstTableNode = smgr->addAnimatedMeshSceneNode(firstTable);
+    scene::IMesh* sink = smgr->getMesh("resources/sink/sink.obj");
+    scene::IMeshSceneNode* sinkNode = smgr->addMeshSceneNode(sink);
+    sinkNode->setPosition(core::vector3df(0.95, 2, 1.3));
+    sinkNode->setRotation(core::vector3df(0, 0, 0));
+    sinkNode->setMaterialTexture(0, driver->getTexture("resources/sink/sink.png") );
+    sinkNode->setMaterialFlag(video::EMF_LIGHTING, false);
+
+    scene::IMesh* firstTable = smgr->getMesh("resources/table/table.obj");
+    scene::IMeshSceneNode* firstTableNode = smgr->addMeshSceneNode(firstTable);
     firstTableNode->setPosition(core::vector3df(1.5, -2.0, 1.3));
     firstTableNode->setMaterialTexture(0, driver->getTexture("resources/table/table.png") );
     firstTableNode->setMaterialFlag(video::EMF_LIGHTING, false);
 
-    scene::IAnimatedMesh* secondTable = smgr->getMesh("resources/table/table.obj");
-    scene::IAnimatedMeshSceneNode* secondTableNode = smgr->addAnimatedMeshSceneNode(secondTable);
+    scene::IMesh* secondTable = smgr->getMesh("resources/table/table.obj");
+    scene::IMeshSceneNode* secondTableNode = smgr->addMeshSceneNode(secondTable);
     secondTableNode->setPosition(core::vector3df(-1.5, 2, 1.3));
     secondTableNode->setMaterialTexture(0, driver->getTexture("resources/table/table.png") );
     secondTableNode->setMaterialFlag(video::EMF_LIGHTING, false);
 
-    scene::IAnimatedMesh* ground = smgr->getMesh("resources/ground/ground.obj");
-    scene::IAnimatedMeshSceneNode* groundNode = smgr->addAnimatedMeshSceneNode(ground);
+    scene::IMesh* ground = smgr->getMesh("resources/ground/ground.obj");
+    scene::IMeshSceneNode* groundNode = smgr->addMeshSceneNode(ground);
     groundNode->setPosition(core::vector3df(0, 0, 0));
     groundNode->setMaterialTexture(0, driver->getTexture("resources/ground/ground.png") );
     groundNode->setMaterialFlag(video::EMF_LIGHTING, false);
